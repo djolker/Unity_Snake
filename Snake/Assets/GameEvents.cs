@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameEvents : MonoBehaviour {
-
+public class GameEvents : MonoBehaviour 
+{
 	static GameObject score;
 
 	//number of links behind the player
 	int linkCount = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Start() 
+	{
 		if(score == null)
 		score = GameObject.FindGameObjectWithTag("Score");
 	}
 	
 	// Update is called once per frame
-	void Update() {
+	void Update() 
+	{
 
 	}
 
@@ -30,11 +32,14 @@ public class GameEvents : MonoBehaviour {
 		linkCount++;
 
 		Vector3 vec = this.transform.position;
+		vec.x += 0;
+		vec.y += .7f;
+		vec.z = this.transform.position.z - linkCount;
 
-		vec.x += 2;
-		vec.z += 2;
+		GameObject sphere = GameObject.CreatePrimitive (PrimitiveType.Sphere);
 
-		GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.position = vec;
+		sphere.transform.parent = this.transform;
+		sphere.transform.Translate(vec);
 	}
 
 	void AddToScore()

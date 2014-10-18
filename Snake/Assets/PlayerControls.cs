@@ -8,12 +8,11 @@ public class PlayerControls : MonoBehaviour
 	public float playerSpeed = 3f;
 	public float turnSpeed = 300f;
 
-//	private Vector3 shot = new Vector3(.1,.1,.1);
+	private Vector3 shot = new Vector3(.1f,.1f,.1f);
 
 	// Use this for initialization
 	void Start () 
 	{
-
 		controller = GetComponent<CharacterController>();
 	}
 	
@@ -32,11 +31,13 @@ public class PlayerControls : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Space))
 		{
 			Debug.Log("space hit!");
+			Fire();
 		}
 	}
 
 	void Fire()
 	{
-		//GameObject.CreatePrimitive (PrimitiveType.Cube).transform.localScale = shot;
+
+		GameObject.CreatePrimitive (PrimitiveType.Cube).transform.localScale = shot;
 	}
 }
