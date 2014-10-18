@@ -4,7 +4,10 @@ using System.Collections;
 public class GameEvents : MonoBehaviour {
 
 	static GameObject score;
+
+	//number of links behind the player
 	int linkCount = 0;
+
 	// Use this for initialization
 	void Start () {
 		if(score == null)
@@ -18,22 +21,20 @@ public class GameEvents : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		AddToScore ();
-
-		SpawnNewLink ();
+		AddToScore();
+		SpawnNewLink();
 	}
 
 	void SpawnNewLink()
 	{
 		linkCount++;
 
-		Vector3 vec;
-		vec.x = 20;
-		vec.z = 20;
-		vec.y = 1;
+		Vector3 vec = this.transform.position;
 
+		vec.x += 2;
+		vec.z += 2;
 
-		GameObject.CreatePrimitive (PrimitiveType.Sphere).transform.position = vec;
+		GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.position = vec;
 	}
 
 	void AddToScore()
