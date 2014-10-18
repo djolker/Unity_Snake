@@ -30,9 +30,4 @@ public class PlayerControls : MonoBehaviour
 			Debug.Log("space hit!");
 		}
 	}
-
-	void OnTriggerEnter(Collider col)
-	{
-		Debug.Log ("Collision!!");
-	}
 }
