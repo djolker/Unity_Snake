@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 
 public class PlayerControls : MonoBehaviour 
 {
@@ -7,9 +8,12 @@ public class PlayerControls : MonoBehaviour
 	public float playerSpeed = 3f;
 	public float turnSpeed = 300f;
 
+//	private Vector3 shot = new Vector3(.1,.1,.1);
+
 	// Use this for initialization
 	void Start () 
 	{
+
 		controller = GetComponent<CharacterController>();
 	}
 	
@@ -29,5 +33,10 @@ public class PlayerControls : MonoBehaviour
 		{
 			Debug.Log("space hit!");
 		}
+	}
+
+	void Fire()
+	{
+		//GameObject.CreatePrimitive (PrimitiveType.Cube).transform.localScale = shot;
 	}
 }
