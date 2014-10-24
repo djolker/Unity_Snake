@@ -4,6 +4,7 @@ using System.Collections;
 public class GameEvents : MonoBehaviour 
 {
 	static GameObject score;
+	public GameObject link;
 
 	//number of links behind the player
 	int linkCount = 0;
@@ -34,12 +35,19 @@ public class GameEvents : MonoBehaviour
 		Vector3 vec = this.transform.position;
 		vec.x += 0;
 		vec.y += .7f;
-		vec.z = this.transform.position.z - linkCount;
+		vec.z -= linkCount;
 
-		GameObject sphere = GameObject.CreatePrimitive (PrimitiveType.Sphere);
+		//GameObject sphere = GameObject.CreatePrimitive (PrimitiveType.Sphere);
 
-		sphere.transform.parent = this.transform;
-		sphere.transform.Translate(vec);
+		//sphere.transform.parent = this.transform;
+		//sphere.transform.Translate(vec);
+
+		//Vector3 test = sphere.transform.parent.position;
+		//link.transform.parent;
+
+		Instantiate (link, this.transform.position, this.transform.rotation);
+
+		int x = 0;
 	}
 
 	void AddToScore()

@@ -37,7 +37,7 @@ public class PlayerControls : MonoBehaviour
 
 	void Fire()
 	{
-
+		//TODO: This
 		GameObject.CreatePrimitive (PrimitiveType.Cube).transform.localScale = shot;
 	}
 }
