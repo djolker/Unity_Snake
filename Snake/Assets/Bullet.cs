@@ -28,8 +28,6 @@ public class Bullet : MonoBehaviour {
 		self = this.gameObject;
 
 		basePos = new Vector3 (-100, 0, 0);
-
-
 	}
 	
 	// Update is called once per frame
