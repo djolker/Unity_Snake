@@ -1,10 +1,22 @@
-﻿using UnityEngine;
+﻿/*
+ * By DJ Olker
+ * 
+ * E-mail: dj.olker@gmail.com
+ * 
+ * Date: 8/24/2014
+ */
+
+using UnityEngine;
+using System.Threading;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameEvents : MonoBehaviour 
 {
 	static GameObject score;
 	public GameObject link;
+
+	public List<Vector3> path = new List<Vector3> ();
 
 	//number of links behind the player
 	int linkCount = 0;
@@ -12,8 +24,10 @@ public class GameEvents : MonoBehaviour
 	// Use this for initialization
 	void Start() 
 	{
-		if(score == null)
-		score = GameObject.FindGameObjectWithTag("Score");
+		if (score == null) 
+		{
+			score = GameObject.FindGameObjectWithTag ("Score");
+		}
 	}
 	
 	// Update is called once per frame

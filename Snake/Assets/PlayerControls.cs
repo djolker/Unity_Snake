@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * By DJ Olker
+ * 
+ * E-mail: dj.olker@gmail.com
+ * 
+ * Date: 8/24/2014
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Threading;
 
@@ -8,7 +16,7 @@ public class PlayerControls : MonoBehaviour
 	public float playerSpeed = 3f;
 	public float turnSpeed = 300f;
 
-	private Vector3 shot = new Vector3(.1f,.1f,.1f);
+	public GameObject bullet;
 
 	// Use this for initialization
 	void Start () 
@@ -37,7 +45,6 @@ public class PlayerControls : MonoBehaviour
 
 	void Fire()
 	{
-		//TODO: This
-		GameObject.CreatePrimitive (PrimitiveType.Cube).transform.localScale = shot;
+		Instantiate (bullet, this.transform.position, this.transform.rotation);
 	}
 }

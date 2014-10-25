@@ -1,5 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+ * By DJ Olker
+ * 
+ * E-mail: dj.olker@gmail.com
+ * 
+ * Date: 8/24/2014
+ */
+
+using UnityEngine;
 using System.Collections;
+
 public class gameCamera : MonoBehaviour 
 {
 	public GameObject player;
