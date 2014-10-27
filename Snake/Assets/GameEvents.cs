@@ -3,7 +3,7 @@
  * 
  * E-mail: dj.olker@gmail.com
  * 
- * Date: 8/24/2014
+ * Date: 8/25/2014
  */
 
 using UnityEngine;
@@ -16,6 +16,8 @@ public class GameEvents : MonoBehaviour
 	static GameObject score;
 	public GameObject link;
 
+    public GameObject lastLink;
+
 	public List<Vector3> path = new List<Vector3> ();
 
 	//number of links behind the player
@@ -24,6 +26,7 @@ public class GameEvents : MonoBehaviour
 	// Use this for initialization
 	void Start() 
 	{
+        //SpawnNewLink();
 		if (score == null) 
 		{
 			score = GameObject.FindGameObjectWithTag ("Score");
@@ -34,7 +37,7 @@ public class GameEvents : MonoBehaviour
 	void Update() 
 	{
 
-	}
+    }
 
 	void OnTriggerEnter(Collider col)
 	{
@@ -44,6 +47,10 @@ public class GameEvents : MonoBehaviour
 
 	void SpawnNewLink()
 	{
+        if (lastLink == null)
+        {
+            lastLink = this.gameObject;
+        }
 		linkCount++;
 
 		Vector3 vec = this.transform.position;
@@ -57,10 +64,15 @@ public class GameEvents : MonoBehaviour
 		//sphere.transform.Translate(vec);
 
 		//Vector3 test = sphere.transform.parent.position;
-		//link.transform.parent;
+		
+		GameObject newLink = Instantiate (link, this.transform.position, this.transform.rotation) as GameObject;
 
-		Instantiate (link, this.transform.position, this.transform.rotation);
+        HingeJoint obj = newLink.hingeJoint;
 
+        obj.connectedBody = lastLink.transform.rigidbody;
+
+
+        lastLink = newLink;
 		int x = 0;
 	}
 
