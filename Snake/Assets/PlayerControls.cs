@@ -38,13 +38,16 @@ public class PlayerControls : MonoBehaviour
 
 		if (Input.GetKeyDown (KeyCode.Space))
 		{
-			Debug.Log("space hit!");
 			Fire();
 		}
 	}
 
 	void Fire()
 	{
-		Instantiate (bullet, this.transform.position, this.transform.rotation);
+        bullet.transform.rotation = this.transform.rotation;
+        bullet.transform.position = this.transform.position;
+        bullet.transform.Translate(Vector3.forward * 1.5f);
+
+		Instantiate (bullet, bullet.transform.position, this.transform.rotation);
 	}
 }
