@@ -16,7 +16,7 @@ public class GameEvents : MonoBehaviour
 	static GameObject score;
 	public GameObject link;
 
-    public GameObject lastLink;
+    public Transform lastLink;
 
 	public List<Vector3> path = new List<Vector3> ();
 
@@ -36,7 +36,10 @@ public class GameEvents : MonoBehaviour
 	// Update is called once per frame
 	void Update() 
 	{
-
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            SpawnNewLink();
+        }
     }
 
 	void OnTriggerEnter(Collider col)
@@ -49,7 +52,7 @@ public class GameEvents : MonoBehaviour
 	{
         if (lastLink == null)
         {
-            lastLink = this.gameObject;
+            lastLink = this.gameObject.transform.Find("HingeAttach");
         }
 		linkCount++;
 
@@ -72,7 +75,7 @@ public class GameEvents : MonoBehaviour
         obj.connectedBody = lastLink.transform.rigidbody;
 
 
-        lastLink = newLink;
+        lastLink = newLink.transform;
 		int x = 0;
 	}
 
