@@ -18,7 +18,12 @@ public class EnemyAI : MonoBehaviour {
 	void Update () {
 	    if (Vector3.Distance(this.transform.position, this.target.transform.position) < 20)
         {
-
+            MoveTowardsPlayer();
         }
 	}
+
+    void MoveTowardsPlayer()
+    {
+
+    }
 }

@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour {
 
 	public Vector3 startingPos = new Vector3();
 
+    public float damage;
+
 	public GameObject self;
 
     public Vector3 basePos;
@@ -29,7 +31,12 @@ public class Bullet : MonoBehaviour {
 
 		basePos = new Vector3 (-100, 0, 0);
 	}
-	
+
+    public void setDamage(float dam)
+    {
+        this.damage = dam;
+    }
+
 	// Update is called once per frame
 	void Update () 
 	{
