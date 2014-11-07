@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour {
 
 			if (this.transform.position.z> 100 || this.transform.position.z<-100 || this.transform.position.x>100 || this.transform.position.x < -100)
 			{
-					Destroy (this.gameObject);
+				Destroy (this.gameObject);
 			}
 		} 
 		else 
@@ -57,4 +57,9 @@ public class Bullet : MonoBehaviour {
 			this.enabled = false;
 		}
 	}
+
+    void onTriggerEvent(Collider col)
+    {
+
+    }
 }
