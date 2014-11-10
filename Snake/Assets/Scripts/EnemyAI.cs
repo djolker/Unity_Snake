@@ -3,9 +3,9 @@ using System.Collections;
 
 public class EnemyAI : MonoBehaviour {
 
+    public bool dead;
     public int health;
     public GameObject target;
-
     public GameObject score;
 
     public float moveSpeed = 2f;
@@ -13,7 +13,13 @@ public class EnemyAI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         health = 10;
-        target = GameObject.FindGameObjectWithTag("Player");    
+        target = GameObject.Find("Player");    
+        dead = false;
+
+        if (score == null) 
+        {
+            score = GameObject.FindGameObjectWithTag("Score");
+        }
 	}
 	
 	// Update is called once per frame
@@ -23,11 +29,15 @@ public class EnemyAI : MonoBehaviour {
             if (Vector3.Distance(this.transform.position, this.target.transform.position) < 20)
             {
                 MoveTowardsPlayer();
+                //TurnTowardsPlayer();
             }
 
             if (health < 0)
             {
-                die();
+                if(!dead)
+                {
+                    die();
+                }
             }
         }
         else
@@ -41,11 +51,26 @@ public class EnemyAI : MonoBehaviour {
         ScoreScript script = score.GetComponent<ScoreScript>();
         script.score += 2;
 
+        dead = true;
         Destroy(this.gameObject);
     }
 
     void MoveTowardsPlayer()
     {
+        this.transform.Translate(Vector3.forward * Time.deltaTime);
+    }
 
+    void TurnTowardsPlayer()
+    {
+        this.transform.Rotate(Vector3.RotateTowards(this.transform.position, target.transform.position,2f,2f));
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.name == "Bullet(Clone)")
+        {
+            Debug.Log("Enemy Collide");
+            health--;
+        }
     }
 }

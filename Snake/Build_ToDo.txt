@@ -1,0 +1,17 @@
+Unity_Snake_Build_Info:
+
+Player Controls:
+WASD turns and moves player
+SPACE shoots bullet
+
+Enemy Features:
+Checks if player is nearby (may be removed)
+Moves when player is close(^^^^^)
+Can die
+Gives 2 points to player on death
+
+ToDo:
+Enemy needs to rotate to player before moving forward
+Bullets currently can cause multiple collisions on an enemy, bullets need to self_destroy on collisions
+Player needs health
+"BounceBack()" method for getting hit by an enemy needs to be made

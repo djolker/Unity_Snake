@@ -24,7 +24,7 @@ public class NodeScript : MonoBehaviour {
     {
 
 	}
-
+   
 	void OnTriggerEnter(Collider col)
 	{
 		JumpToNewPosition ();
