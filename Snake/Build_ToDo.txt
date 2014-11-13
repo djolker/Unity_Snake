@@ -1,5 +1,11 @@
 Unity_Snake_Build_Info:
 
+Known Issues:
+What the hell is up with enemy spawn points, amirite?
+
+Recent Changes:
+Bullets now destroy themselves on impact (11/13/2014)
+
 Player Controls:
 WASD turns and moves player
 SPACE shoots bullet
@@ -12,6 +18,4 @@ Gives 2 points to player on death
 
 ToDo:
 Enemy needs to rotate to player before moving forward
-Bullets currently can cause multiple collisions on an enemy, bullets need to self_destroy on collisions
-Player needs health
 "BounceBack()" method for getting hit by an enemy needs to be made

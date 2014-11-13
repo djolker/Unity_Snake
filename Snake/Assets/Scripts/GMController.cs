@@ -34,7 +34,7 @@ public class GMController : MonoBehaviour {
         Vector3 vec = new Vector3 ();
         vec.x = x;
         vec.z = z;
-        vec.y = 5.953037f;
+        vec.y = .98f;
 
         return vec;
     }

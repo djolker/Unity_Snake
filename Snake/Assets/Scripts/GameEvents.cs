@@ -15,6 +15,7 @@ public class GameEvents : MonoBehaviour
 {
 	static GameObject score;
 	public GameObject link;
+    public int health;
 
     public Transform lastLink;
 
@@ -26,6 +27,8 @@ public class GameEvents : MonoBehaviour
 	// Use this for initialization
 	void Start() 
 	{
+        health = 10;
+
         //SpawnNewLink();
 		if (score == null) 
 		{
@@ -51,7 +54,7 @@ public class GameEvents : MonoBehaviour
         }
         else if(col.name == "Enemy")
         {
-
+            BounceBack();
         }
 	}
 
@@ -92,6 +95,11 @@ public class GameEvents : MonoBehaviour
 
         }
 	}
+
+    void BounceBack()
+    {
+        this.transform.Translate(Vector3.back * Time.deltaTime * 20);
+    }
 
 	void AddToScore(int add)
 	{

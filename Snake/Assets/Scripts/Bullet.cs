@@ -58,8 +58,8 @@ public class Bullet : MonoBehaviour {
 		}
 	}
 
-    void onTriggerEvent(Collider col)
+    void OnTriggerEnter(Collider col)
     {
-
+        Destroy(this.gameObject);
     }
 }

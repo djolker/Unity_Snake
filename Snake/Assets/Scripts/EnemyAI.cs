@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour {
                 //TurnTowardsPlayer();
             }
 
-            if (health < 0)
+            if (health <= 0)
             {
                 if(!dead)
                 {
