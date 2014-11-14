@@ -1,7 +1,8 @@
 Unity_Snake_Build_Info:
 
 Known Issues:
-What the hell is up with enemy spawn points, amirite?
+Player falls through floor when they go up on the Y axis too far or clip through ground
+Enemy does not bounce back on hits
 
 Recent Changes:
 Bullets now destroy themselves on impact (11/13/2014)
@@ -11,11 +12,11 @@ WASD turns and moves player
 SPACE shoots bullet
 
 Enemy Features:
-Checks if player is nearby (may be removed)
-Moves when player is close(^^^^^)
 Can die
 Gives 2 points to player on death
+Follows player
 
 ToDo:
 Enemy needs to rotate to player before moving forward
 "BounceBack()" method for getting hit by an enemy needs to be made
+HingeJoint sphere links

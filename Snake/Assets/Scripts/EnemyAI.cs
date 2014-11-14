@@ -10,6 +10,8 @@ public class EnemyAI : MonoBehaviour {
 
     public float moveSpeed = 2f;
 
+    private Vector3 dir;
+
 	// Use this for initialization
 	void Start () {
         health = 10;
@@ -26,11 +28,9 @@ public class EnemyAI : MonoBehaviour {
 	void Update () {
         if (this.gameObject != null)
         {
-            if (Vector3.Distance(this.transform.position, this.target.transform.position) < 20)
-            {
-                MoveTowardsPlayer();
-                //TurnTowardsPlayer();
-            }
+            MoveTowardsPlayer();
+            TurnTowardsPlayer();
+            
 
             if (health <= 0)
             {
@@ -50,7 +50,6 @@ public class EnemyAI : MonoBehaviour {
     {
         ScoreScript script = score.GetComponent<ScoreScript>();
         script.score += 2;
-
         dead = true;
         Destroy(this.gameObject);
     }
@@ -62,7 +61,12 @@ public class EnemyAI : MonoBehaviour {
 
     void TurnTowardsPlayer()
     {
-        this.transform.Rotate(Vector3.RotateTowards(this.transform.position, target.transform.position,2f,2f));
+        if (target)
+        {
+            dir = target.transform.position - this.transform.position;
+            dir.Normalize();
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 3f * Time.deltaTime);
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -71,6 +75,15 @@ public class EnemyAI : MonoBehaviour {
         {
             Debug.Log("Enemy Collide");
             health--;
+        } else if (col.name == "Player")
+        {
+            Debug.Log("PlayerHit");
+            this.rigidbody.AddForce(Vector3.back * 30f);
         }
+    }
+
+    void BounceBack()
+    {
+
     }
 }

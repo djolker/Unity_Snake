@@ -55,6 +55,7 @@ public class GameEvents : MonoBehaviour
         else if(col.name == "Enemy")
         {
             BounceBack();
+            health--;
         }
 	}
 
@@ -72,27 +73,17 @@ public class GameEvents : MonoBehaviour
     		vec.x += 0;
     		vec.y += .7f;
     		vec.z -= linkCount;
-
-    		//GameObject sphere = GameObject.CreatePrimitive (PrimitiveType.Sphere);
-
-    		//sphere.transform.parent = this.transform;
-    		//sphere.transform.Translate(vec);
-
-    		//Vector3 test = sphere.transform.parent.position;
     		
     		GameObject newLink = Instantiate (link, this.transform.position, this.transform.rotation) as GameObject;
-
             HingeJoint obj = newLink.hingeJoint;
 
             obj.connectedBody = lastLink.transform.rigidbody;
 
-
             lastLink = newLink.transform;
-    		int x = 0;
         }
         catch
         {
-
+            Debug.Log("Something failed");
         }
 	}
 
