@@ -33,10 +33,16 @@ public class gameCamera : MonoBehaviour
 
 	void Update () 
 	{
-		movementX = ((player.transform.position.x + offsetX - this.transform.position.x))/maximumDistance;
-		movementY = ((player.transform.position.y + offsetY - this.transform.position.y)) / maximumDistance;
-		movementZ = ((player.transform.position.z + offsetZ - this.transform.position.z))/maximumDistance;
+        if (player != null)
+        {
+            movementX = ((player.transform.position.x + offsetX - this.transform.position.x)) / maximumDistance;
+            movementY = ((player.transform.position.y + offsetY - this.transform.position.y)) / maximumDistance;
+            movementZ = ((player.transform.position.z + offsetZ - this.transform.position.z)) / maximumDistance;
 
-		this.transform.position += new Vector3((movementX * playerVelocity * Time.deltaTime), (movementY * playerVelocity * Time.deltaTime), (movementZ * playerVelocity * Time.deltaTime));
-	}
+            this.transform.position += new Vector3((movementX * playerVelocity * Time.deltaTime), (movementY * playerVelocity * Time.deltaTime), (movementZ * playerVelocity * Time.deltaTime));
+        } else
+        {
+            this.enabled = false;
+        }
+    }
 }

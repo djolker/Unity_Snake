@@ -77,7 +77,7 @@ public class EnemyAI : MonoBehaviour {
             health--;
         } else if (col.name == "Player")
         {
-            Debug.Log("PlayerHit");
+            //Debug.Log("PlayerHit");
             this.rigidbody.AddForce(Vector3.back * 30f);
         }
     }

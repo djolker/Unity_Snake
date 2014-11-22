@@ -3,7 +3,7 @@
  * 
  * E-mail: dj.olker@gmail.com
  * 
- * Date: 8/25/2014
+ * Date: 9/22/2014
  */
 
 using UnityEngine;
@@ -39,7 +39,18 @@ public class GameEvents : MonoBehaviour
 	// Update is called once per frame
 	void Update() 
 	{
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        if (this.gameObject != null)
+        {
+            if (health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        } else
+        {
+            this.enabled = false;
+        }
+
+        if (Input.GetKey(KeyCode.Q))
         {
             SpawnNewLink();
         }
@@ -47,12 +58,13 @@ public class GameEvents : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
+        Debug.Log("le hit");
         if (col.name == "Node")
         {
             AddToScore(1);
             SpawnNewLink();
         }
-        else if(col.name == "Enemy")
+        else if(col.name == "Enemy(Clone)")
         {
             BounceBack();
             health--;
@@ -89,7 +101,7 @@ public class GameEvents : MonoBehaviour
 
     void BounceBack()
     {
-        this.transform.Translate(Vector3.back * Time.deltaTime * 20);
+        this.transform.Translate(Vector3.back * Time.deltaTime * 200);
     }
 
 	void AddToScore(int add)

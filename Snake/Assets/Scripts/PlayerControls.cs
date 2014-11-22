@@ -3,7 +3,7 @@
  * 
  * E-mail: dj.olker@gmail.com
  * 
- * Date: 8/24/2014
+ * Date: 9/22/2014
  */
 
 using UnityEngine;
@@ -27,19 +27,25 @@ public class PlayerControls : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		float horizontal = Input.GetAxis ("Horizontal") * turnSpeed * Time.deltaTime;
-		transform.Rotate (0, horizontal, 0);
+        if (this.gameObject != null)
+        {
+            float horizontal = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+            transform.Rotate(0, horizontal, 0);
 
-		if (!(Input.GetKey (KeyCode.LeftShift)))
-		{
-			float vertical = Input.GetAxis ("Vertical") * playerSpeed * Time.deltaTime;
-			transform.Translate (0, 0, vertical);
-		}
+            if (!(Input.GetKey(KeyCode.LeftShift)))
+            {
+                float vertical = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
+                transform.Translate(0, 0, vertical);
+            }
 
-		if (Input.GetKeyDown (KeyCode.Space))
-		{
-			Fire();
-		}
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Fire();
+            }
+        } else
+        {
+            this.enabled = false;
+        }
 	}
 
 	void Fire()

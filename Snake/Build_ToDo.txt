@@ -1,4 +1,4 @@
-Unity_Snake_Build_Info:
+Unity_Snake_Build_Info: "Zero Asset Snake"
 
 Known Issues:
 Player falls through floor when they go up on the Y axis too far or clip through ground
@@ -15,8 +15,17 @@ Enemy Features:
 Can die
 Gives 2 points to player on death
 Follows player
+hits remove 1 health per hit
+
+Player Features:
+Score counts and displays properly
+Has health
+Can Die (game currently reacts properly to death)
+Bounce back works, distance needs to be tweaked
 
 ToDo:
 Enemy needs to rotate to player before moving forward
 "BounceBack()" method for getting hit by an enemy needs to be made
 HingeJoint sphere links
+Death sequence
+Display health
