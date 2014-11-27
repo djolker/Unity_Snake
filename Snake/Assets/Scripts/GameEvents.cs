@@ -58,16 +58,18 @@ public class GameEvents : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
-        Debug.Log("le hit");
         if (col.name == "Node")
         {
             AddToScore(1);
+            AddToMissles(1);
             SpawnNewLink();
-        }
-        else if(col.name == "Enemy(Clone)")
+        } else if (col.name == "Enemy(Clone)")
         {
             BounceBack();
             health--;
+        } else if (col.name == "HealthPlus(Clone)")
+        {
+            health++;
         }
 	}
 
@@ -102,6 +104,12 @@ public class GameEvents : MonoBehaviour
     void BounceBack()
     {
         this.transform.Translate(Vector3.back * Time.deltaTime * 200);
+    }
+
+    void AddToMissles(int add)
+    {
+        PlayerControls script = this.GetComponent <PlayerControls>();
+        script.missles += add;
     }
 
 	void AddToScore(int add)
